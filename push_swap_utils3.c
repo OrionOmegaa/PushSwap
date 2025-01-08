@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	pa(u_list **stack_a, u_list **stack_b)
+int	pa(t_tlist **stack_a, t_tlist **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
@@ -20,7 +20,7 @@ int	pa(u_list **stack_a, u_list **stack_b)
 	return (0);
 }
 
-int	pb(u_list **stack_a, u_list **stack_b)
+int	pb(t_tlist **stack_a, t_tlist **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
@@ -28,7 +28,7 @@ int	pb(u_list **stack_a, u_list **stack_b)
 	return (0);
 }
 
-int	sa(u_list **stack_a)
+int	sa(t_tlist **stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
@@ -36,7 +36,7 @@ int	sa(u_list **stack_a)
 	return (0);
 }
 
-int	sb(u_list **stack_b)
+int	sb(t_tlist **stack_b)
 {
 	if (swap(stack_b) == -1)
 		return (-1);
@@ -44,9 +44,9 @@ int	sb(u_list **stack_b)
 	return (0);
 }
 
-int	ss(u_list **stack_a, u_list **stack_b)
+int	ss(t_tlist **stack_a, t_tlist **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+	if ((ft_lsttsize(*stack_a) < 2) || (ft_lsttsize(*stack_b) < 2))
 		return (-1);
 	swap(stack_a);
 	swap(stack_b);

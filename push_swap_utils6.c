@@ -29,9 +29,9 @@ void	ft_free(char **str)
 		free(str[i--]);
 }
 
-int	is_sorted(t_list **stack)
+int	is_sorted(t_tlist **stack)
 {
-	t_list	*head;
+	t_tlist	*head;
 
 	head = *stack;
 	while (head && head->next)
@@ -43,9 +43,9 @@ int	is_sorted(t_list **stack)
 	return (1);
 }
 
-int	get_distance(t_list **stack, int index)
+int	get_distance(t_tlist **stack, int index)
 {
-	t_list	*head;
+	t_tlist	*head;
 	int		distance;
 
 	distance = 0;

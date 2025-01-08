@@ -6,13 +6,13 @@
 /*   By: hdescamp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 10:28:52 by hdescamp          #+#    #+#             */
-/*   Updated: 2024/12/16 14:29:02 by hdescamp         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:33:24 by hdescamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rra(u_list **stack_a)
+int	rra(t_tlist **stack_a)
 {
 	if (reverserotate(stack_a) == -1)
 		return (-1);
@@ -20,7 +20,7 @@ int	rra(u_list **stack_a)
 	return (0);
 }
 
-int	rrb(u_list **stack_b)
+int	rrb(t_tlist **stack_b)
 {
 	if (reverserotate(stack_b) == -1)
 		return (-1);
@@ -28,7 +28,7 @@ int	rrb(u_list **stack_b)
 	return (0);
 }
 
-int	ra(u_list **stack_a)
+int	ra(t_tlist **stack_a)
 {
 	if (rotate(stack_a) == -1)
 		return (-1);
@@ -36,7 +36,7 @@ int	ra(u_list **stack_a)
 	return (0);
 }
 
-int	rb(u_list **stack_b)
+int	rb(t_tlist **stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);
@@ -44,9 +44,9 @@ int	rb(u_list **stack_b)
 	return (0);
 }
 
-int	rr(u_list **stack_a, u_list **stack_b)
+int	rr(t_tlist **stack_a, t_tlist **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+	if ((ft_lsttsize(*stack_a) < 2) || (ft_lsttsize(*stack_b) < 2))
 		return (-1);
 	rotate(stack_a);
 	rotate(stack_b);

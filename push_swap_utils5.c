@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-u_list	*ft_lstnew(int value)
+t_tlist	*ft_lsttnew(int value)
 {
-	u_list	*new;
+	t_tlist	*new;
 
-	new = (u_list *) malloc(sizeof(*new));
+	new = (t_tlist *) malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -25,10 +25,10 @@ u_list	*ft_lstnew(int value)
 	return (new);
 }
 
-static u_list	*get_next_min(u_list **stack)
+static t_tlist	*get_next_min(t_tlist **stack)
 {
-	u_list	*head;
-	u_list	*min;
+	t_tlist	*head;
+	t_tlist	*min;
 	int		has_min;
 
 	min = NULL;
@@ -49,9 +49,9 @@ static u_list	*get_next_min(u_list **stack)
 	return (min);
 }
 
-void	index_stack(u_list **stack)
+void	index_stack(t_tlist **stack)
 {
-	u_list	*head;
+	t_tlist	*head;
 	int		index;
 
 	index = 0;
@@ -63,16 +63,16 @@ void	index_stack(u_list **stack)
 	}
 }
 
-void	make_top(u_list **stack, int distance)
+void	make_top(t_tlist **stack, int distance)
 {
-	u_list	*head;
+	t_tlist	*head;
 	int		tmp;
 
 	if (distance == 0)
 		return ;
 	head = *stack;
-	tmp = ft_lstsize(head) - distance;
-	if (distance <= (ft_lstsize(head) / 2))
+	tmp = ft_lsttsize(head) - distance;
+	if (distance <= (ft_lsttsize(head) / 2))
 	{
 		while (distance-- > 0)
 			ra(stack);
@@ -84,10 +84,10 @@ void	make_top(u_list **stack, int distance)
 	}
 }
 
-void	free_stack(u_list **stack)
+void	free_stack(t_tlist **stack)
 {
-	u_list	*head;
-	u_list	*tmp;
+	t_tlist	*head;
+	t_tlist	*tmp;
 
 	head = *stack;
 	while (head)

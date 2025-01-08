@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-void	initstack(u_list **stack, int argc, char **argv)
+void	initstack(t_tlist **stack, int argc, char **argv)
 {
-	u_list	*new;
+	t_tlist	*new;
 	char	**args;
 	int		i;
 
 	i = 0;
 	if (argc == 2)
-		args = ft_split(argv[1], " ");
+		args = ft_split(argv[1], ' ');
 	else
 	{
 		i = 1;
@@ -28,8 +28,8 @@ void	initstack(u_list **stack, int argc, char **argv)
 	}
 	while (args[i])
 	{
-		new = ft_lstnew(ft_atoi(args[i]));
-		ft_lstadd_back(stack, new);
+		new = ft_lsttnew(ft_atoi(args[i]));
+		ft_lsttadd_back(stack, new);
 		i++;
 	}
 	index_stack(stack);
@@ -37,9 +37,9 @@ void	initstack(u_list **stack, int argc, char **argv)
 		ft_free(args);
 }
 
-static void	sort_stack(u_list **stack_a, u_list **stack_b)
+static void	sort_stack(t_tlist **stack_a, t_tlist **stack_b)
 {
-	if (ft_lstsize(*stack_a) <= 5)
+	if (ft_lsttsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
@@ -47,14 +47,14 @@ static void	sort_stack(u_list **stack_a, u_list **stack_b)
 
 int	main(int argc, char **argv)
 {
-	u_list	**stack_a;
-	u_list	**stack_b;
+	t_tlist	**stack_a;
+	t_tlist	**stack_b;
 
 	if (argc < 2)
 		return (-1);
 	ft_check_args(argc, argv);
-	stack_a = (u_list **)malloc(sizeof(u_list));
-	stack_b = (u_list **)malloc(sizeof(u_list));
+	stack_a = (t_tlist **)malloc(sizeof(t_tlist));
+	stack_b = (t_tlist **)malloc(sizeof(t_tlist));
 	*stack_a = NULL;
 	*stack_b = NULL;
 	initstack(stack_a, argc, argv);

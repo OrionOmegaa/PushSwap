@@ -6,20 +6,20 @@
 /*   By: hdescamp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:33:00 by hdescamp          #+#    #+#             */
-/*   Updated: 2024/12/16 14:28:39 by hdescamp         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:26:51 by hdescamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap(u_list **stack)
+int	swap(t_tlist **stack)
 {
-	u_list	*head;
-	u_list	*next;
+	t_tlist	*head;
+	t_tlist	*next;
 	int		tmp_val;
 	int		tmp_index;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lsttsize(*stack) < 2)
 		return (-1);
 	head = *stack;
 	next = head->next;
@@ -34,13 +34,13 @@ int	swap(u_list **stack)
 	return (0);
 }
 
-int	push(u_list **stack_to, u_list **stack_from)
+int	push(t_tlist **stack_to, t_tlist **stack_from)
 {
-	u_list	*tmp;
-	u_list	*head_to;
-	u_list	*head_from;
+	t_tlist	*tmp;
+	t_tlist	*head_to;
+	t_tlist	*head_from;
 
-	if (ft_lstsize(*stack_from) == 0)
+	if (ft_lsttsize(*stack_from) == 0)
 		return (-1);
 	head_to = *stack_to;
 	head_from = *stack_from;
@@ -61,30 +61,30 @@ int	push(u_list **stack_to, u_list **stack_from)
 	return (0);
 }
 
-int	rotate(u_list **stack)
+int	rotate(t_tlist **stack)
 {
-	u_list	*head;
-	u_list	*tail;
+	t_tlist	*head;
+	t_tlist	*tail;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lsttsize(*stack) < 2)
 		return (-1);
 	head = *stack;
-	tail = ft_lstlast(head);
+	tail = ft_lsttlast(head);
 	*stack = head->next;
 	head->next = NULL;
 	tail->next = head;
 	return (0);
 }
 
-int	reverserotate(u_list **stack)
+int	reverserotate(t_tlist **stack)
 {
-	u_list	*head;
-	u_list	*tail;
+	t_tlist	*head;
+	t_tlist	*tail;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lsttsize(*stack) < 2)
 		return (-1);
 	head = *stack;
-	tail = ft_lstlast(head);
+	tail = ft_lsttlast(head);
 	while (head)
 	{
 		if (head->next->next == NULL)
@@ -99,9 +99,9 @@ int	reverserotate(u_list **stack)
 	return (0);
 }
 
-int	rrr(u_list **stack_a, u_list **stack_b)
+int	rrr(t_tlist **stack_a, t_tlist **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+	if ((ft_lsttsize(*stack_a) < 2) || (ft_lsttsize(*stack_b) < 2))
 		return (-1);
 	reverserotate(stack_a);
 	reverserotate(stack_b);
