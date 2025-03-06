@@ -6,7 +6,7 @@
 /*   By: hdescamp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:56:48 by hdescamp          #+#    #+#             */
-/*   Updated: 2025/01/08 16:56:54 by hdescamp         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:26:24 by hdescamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	ft_isnum(char *num)
 
 void	ft_check_args(int argc, char **argv)
 {
-	int		i;
-	long	tmp;
-	char	**args;	
+	int			i;
+	long long	tmp;
+	char		**args;	
 
 	i = 0;
 	if (argc == 2)
@@ -56,7 +56,7 @@ void	ft_check_args(int argc, char **argv)
 	}
 	while (args[i])
 	{
-		tmp = ft_atoi(args[i]);
+		tmp = ft_atoll(args[i]);
 		if (!ft_isnum(args[i]))
 			ft_error("Error");
 		if (ft_contains(tmp, args, i))
@@ -67,4 +67,49 @@ void	ft_check_args(int argc, char **argv)
 	}
 	if (argc == 2)
 		ft_free(args);
+}
+
+int	get_min(t_tlist **stack, int val)
+{
+	t_tlist	*head;
+	int		min;
+
+	head = *stack;
+	min = head->index;
+	while (head->next)
+	{
+		head = head->next;
+		if ((head->index < min) && head->index != val)
+			min = head->index;
+	}
+	return (min);
+}
+
+long long	ft_atoll(const char *str)
+{
+	t_tlist	list;
+
+	list.sign = 1;
+	list.result = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			list.sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		if (list.result > (LLONG_MAX / 10) || (list.result == LLONG_MAX / \
+				10 && (*str - '0') > LLONG_MAX % 10))
+		{
+			if (list.sign == 1)
+				return (LLONG_MAX);
+			else
+				return (LLONG_MIN);
+		}
+		list.result = list.result * 10 + (*str++ - '0');
+	}
+	return (list.result * list.sign);
 }

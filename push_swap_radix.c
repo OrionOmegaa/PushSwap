@@ -60,3 +60,14 @@ void	radix_sort(t_tlist **stack_a, t_tlist **stack_b)
 		i++;
 	}
 }
+
+void	reduc_sort_3(t_tlist **stack_a, int min, t_tlist *head)
+{
+	if (head->next->index == min)
+		ra(stack_a);
+	else
+	{
+		sa(stack_a);
+		rra(stack_a);
+	}
+}

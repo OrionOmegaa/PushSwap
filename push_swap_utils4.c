@@ -64,7 +64,7 @@ int	ft_lsttsize(t_tlist *head)
 	return (i);
 }
 
-void	printList(t_tlist *head)
+void	print_list(t_tlist *head)
 {
 	t_tlist	*tmp;
 

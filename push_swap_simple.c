@@ -12,23 +12,7 @@
 
 #include "push_swap.h"
 
-static int	get_min(t_tlist **stack, int val)
-{
-	t_tlist	*head;
-	int		min;
-
-	head = *stack;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && head->index != val)
-			min = head->index;
-	}
-	return (min);
-}
-
-static void	sort_3(t_tlist **stack_a)
+void	sort_3(t_tlist **stack_a)
 {
 	t_tlist	*head;
 	int		min;
@@ -53,8 +37,29 @@ static void	sort_3(t_tlist **stack_a)
 			rra(stack_a);
 	}
 	else
+		reduc_sort_3(stack_a, min, head);
+}
+
+void	handle_sorted_or_rotate(t_tlist **stack_a, int min, int next_min)
+{
+	if (is_sorted(stack_a))
+		return ;
+	if ((*stack_a)->index == min && (*stack_a)->next->index != next_min)
 	{
-		if (head->next->index == min)
+		ra(stack_a);
+		sa(stack_a);
+		rra(stack_a);
+	}
+	else if ((*stack_a)->index == next_min)
+	{
+		if ((*stack_a)->next->index == min)
+			sa(stack_a);
+		else
+			rra(stack_a);
+	}
+	else
+	{
+		if ((*stack_a)->next->index == min)
 			ra(stack_a);
 		else
 		{

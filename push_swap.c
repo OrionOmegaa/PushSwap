@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	t_tlist	**stack_a;
 	t_tlist	**stack_b;
 
-	if (argc < 2)
+	if (argc <= 2)
 		return (-1);
 	ft_check_args(argc, argv);
 	stack_a = (t_tlist **)malloc(sizeof(t_tlist));
