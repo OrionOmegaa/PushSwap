@@ -49,6 +49,7 @@ int			get_distance(t_tlist **stack, int index);
 void		make_top(t_tlist **stack, int distance);
 void		free_stack(t_tlist **stack);
 void		ft_free(char **str);
+void		ft_free_split(char **tab);
 
 //Sort
 

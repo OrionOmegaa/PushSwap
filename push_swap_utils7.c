@@ -66,7 +66,7 @@ void	ft_check_args(int argc, char **argv)
 		i++;
 	}
 	if (argc == 2)
-		ft_free(args);
+		ft_free_split(args);
 }
 
 int	get_min(t_tlist **stack, int val)

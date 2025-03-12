@@ -1,7 +1,7 @@
 .SILENT:
 
 FLAGS_DEBUG= -fsanitize=address -g3 -O1 -fno-omit-frame-pointer -fno-optimize-sibling-calls
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -fsanitize=address -g
 FILES= push_swap.c push_swap_utils1.c push_swap_utils2.c push_swap_utils3.c \
       push_swap_utils4.c push_swap_radix.c push_swap_simple.c push_swap_utils5.c \
       push_swap_utils6.c push_swap_utils7.c \

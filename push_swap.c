@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+void ft_free_split(char **tab)
+{
+    int i = 0;
+    
+    if (tab)
+    {
+        while (tab[i])
+        {
+            free(tab[i]);
+            i++;
+        }
+        free(tab);
+    }
+}
+
 void	initstack(t_tlist **stack, int argc, char **argv)
 {
 	t_tlist	*new;
@@ -34,7 +49,7 @@ void	initstack(t_tlist **stack, int argc, char **argv)
 	}
 	index_stack(stack);
 	if (argc == 2)
-		ft_free(args);
+		ft_free_split(args);
 }
 
 static void	sort_stack(t_tlist **stack_a, t_tlist **stack_b)
@@ -50,7 +65,7 @@ int	main(int argc, char **argv)
 	t_tlist	**stack_a;
 	t_tlist	**stack_b;
 
-	if (argc <= 2)
+	if (argc < 2)
 		return (-1);
 	ft_check_args(argc, argv);
 	stack_a = (t_tlist **)malloc(sizeof(t_tlist));
