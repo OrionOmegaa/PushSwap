@@ -29,7 +29,7 @@ static int	ft_isnum(char *num)
 	int	i;
 
 	i = 0;
-	if (num[0] == '-')
+	if (num[0] == '-' && num[1] != '\0')
 		i++;
 	while (num[i])
 	{

@@ -12,19 +12,20 @@
 
 #include "push_swap.h"
 
-void ft_free_split(char **tab)
+void	ft_free_split(char **tab)
 {
-    int i = 0;
-    
-    if (tab)
-    {
-        while (tab[i])
-        {
-            free(tab[i]);
-            i++;
-        }
-        free(tab);
-    }
+	int	i;
+
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab);
+	}
 }
 
 void	initstack(t_tlist **stack, int argc, char **argv)
